@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Slide Maaf</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      color: white;
+      font-family: sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-text {
+      position: absolute;
+      top: 25%;
+      width: 100%;
+      text-align: center;
+      font-size: 1.2em;
+      line-height: 1.8;
+    }
+
+    .baris {
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+    }
+
+    .muncul {
+      opacity: 1;
+    }
+
+    .maaf {
+      position: absolute;
+      bottom: -30px;
+      font-size: 1em;
+      color: white;
+      opacity: 0;
+      animation: naik 4s linear forwards;
+    }
+
+    @keyframes naik {
+      to {
+        transform: translateY(-120vh);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-text" id="teks-container">
+    <div class="baris">Maaf ya...</div>
+    <div class="baris">Aku tau aku bikin kamu marah, bad mood, sama.</div>
+    <div class="baris"> ngambek.Nggak ada niat buat nyakitin atau nyebelin.</div>
+    <div class="baris">Aku cuma bego aja kadang.</div>
+    <div class="baris">Tapi aku beneran minta maap 😔.</div>
+    <div class="baris">Maapin yaaaaaaaaa 🙏🏻🙏🏻🙏🏻</div>
+  </div>
+
+  <script>
+    // Tampilkan baris satu per satu
+    const baris = document.querySelectorAll('.baris');
+    baris.forEach((el, i) => {
+      setTimeout(() => {
+        el.classList.add('muncul');
+      }, i * 1500); // Delay antar baris 1.5 detik
+    });
+
+    // Efek kata "Maaf" melayang
+    function buatMaaf() {
+      const maaf = document.createElement('div');
+      maaf.className = 'maaf';
+      maaf.innerText = 'Maaf';
+      maaf.style.left = Math.random() * 100 + 'vw';
+      maaf.style.animationDuration = (3 + Math.random() * 2) + 's';
+      document.body.appendChild(maaf);
+
+      setTimeout(() => {
+        maaf.remove();
+      }, 6000);
+    }
+
+    setInterval(buatMaaf, 300);
+  </script>
+</body>
+</html>
